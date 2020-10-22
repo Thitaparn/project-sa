@@ -6,7 +6,7 @@ import (
 	"github.com/facebookincubator/ent/schema/field"
 )
 
-// Gender schema.
+// Gender holds the schema definition for the Gender entity.
 type Gender struct {
 	ent.Schema
 }
@@ -18,7 +18,7 @@ func (Gender) Fields() []ent.Field {
 	}
 }
 
-// Edges of the Gender.(one)
+// Edges of the Gender.
 func (Gender) Edges() []ent.Edge {
     return []ent.Edge{
         edge.To("patients", Patient.Type).StorageKey(edge.Column("gender_id")),

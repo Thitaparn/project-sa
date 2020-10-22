@@ -9,19 +9,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// EmployeeController defines the struct for the Employee controller
+// EmployeeController defines the struct for the employee controller
 type EmployeeController struct {
 	client *ent.Client
 	router gin.IRouter
 }
 
-// EmployeeCreate handles POST requests for adding Employee entities
-// @Summary Create Employee
-// @Description Create Employee
-// @ID create-Employee
+// EmployeeCreate handles POST requests for adding employee entities
+// @Summary Create employee
+// @Description Create employee
+// @ID create-employee
 // @Accept   json
 // @Produce  json
-// @Param Employee body ent.Employee true "Employee entity"
+// @Param employee body ent.Employee true "Employee entity"
 // @Success 200 {object} ent.Employee
 // @Failure 400 {object} gin.H
 // @Failure 500 {object} gin.H
@@ -51,10 +51,10 @@ func (ctl *EmployeeController) EmployeeCreate(c *gin.Context) {
 	c.JSON(200, e)
 }
 
-// GetEmployee handles GET requests to retrieve a Employee entity
-// @Summary Get a Employee entity by ID
-// @Description get Employee by ID
-// @ID get-Employee
+// GetEmployee handles GET requests to retrieve a employee entity
+// @Summary Get a employee entity by ID
+// @Description get employee by ID
+// @ID get-employee
 // @Produce  json
 // @Param id path int true "Employee ID"
 // @Success 200 {object} ent.Employee
@@ -85,10 +85,10 @@ func (ctl *EmployeeController) GetEmployee(c *gin.Context) {
 	c.JSON(200, e)
 }
 
-// ListEmployee handles request to get a list of Employee entities
-// @Summary List Employee entities
-// @Description list Employee entities
-// @ID list-Employee
+// ListEmployee handles request to get a list of employee entities
+// @Summary List employee entities
+// @Description list employee entities
+// @ID list-employee
 // @Produce json
 // @Param limit  query int false "Limit"
 // @Param offset query int false "Offset"

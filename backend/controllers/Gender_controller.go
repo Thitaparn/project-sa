@@ -8,23 +8,23 @@ import (
    "github.com/gin-gonic/gin"
 )
  
-// GenderController defines the struct for the Gender controller
+// GenderController defines the struct for the gender controller
 type GenderController struct {
    client *ent.Client
    router gin.IRouter
 }
 
-// GenderCreate handles POST requests for adding Gender entities
-// @Summary Create Gender
-// @Description Create Gender
-// @ID create-Gender
+// GenderCreate handles POST requests for adding gender entities
+// @Summary Create gender
+// @Description Create gender
+// @ID create-gender
 // @Accept   json
 // @Produce  json
-// @Param Gender body ent.Gender true "Gender entity"
+// @Param gender body ent.Gender true "Gender entity"
 // @Success 200 {object} ent.Gender
 // @Failure 400 {object} gin.H
 // @Failure 500 {object} gin.H
-// @Router /users [post]
+// @Router /genders [post]
 func (ctl *GenderController) GenderCreate(c *gin.Context) {
 	obj := ent.Gender{}
 	if err := c.ShouldBind(&obj); err != nil {
@@ -49,10 +49,10 @@ func (ctl *GenderController) GenderCreate(c *gin.Context) {
  }
  
 
-// GetGender handles GET requests to retrieve a Gender entity
-// @Summary Get a Gender entity by ID
-// @Description get Gender by ID
-// @ID get-Gender
+// GetGender handles GET requests to retrieve a gender entity
+// @Summary Get a gender entity by ID
+// @Description get gender by ID
+// @ID get-gender
 // @Produce  json
 // @Param id path int true "Gender ID"
 // @Success 200 {object} ent.Gender
@@ -83,10 +83,10 @@ func (ctl *GenderController) GetGender(c *gin.Context) {
 	c.JSON(200, g)
  }
 
-// ListGender handles request to get a list of Gender entities
-// @Summary List Gender entities
-// @Description list Gender entities
-// @ID list-Gender
+// ListGender handles request to get a list of gender entities
+// @Summary List gender entities
+// @Description list gender entities
+// @ID list-gender
 // @Produce json
 // @Param limit  query int false "Limit"
 // @Param offset query int false "Offset"
@@ -124,7 +124,7 @@ func (ctl *GenderController) ListGender(c *gin.Context) {
  }
  
 
-// NewGenderController creates and registers handles for the Gender controller
+// NewGenderController creates and registers handles for the gender controller
 func NewGenderController(router gin.IRouter, client *ent.Client) *GenderController {
 	gc := &GenderController{
 		client: client,

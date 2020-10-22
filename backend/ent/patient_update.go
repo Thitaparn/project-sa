@@ -45,15 +45,8 @@ func (pu *PatientUpdate) SetPatientName(s string) *PatientUpdate {
 }
 
 // SetPatientCardID sets the patient_cardID field.
-func (pu *PatientUpdate) SetPatientCardID(i int) *PatientUpdate {
-	pu.mutation.ResetPatientCardID()
-	pu.mutation.SetPatientCardID(i)
-	return pu
-}
-
-// AddPatientCardID adds i to patient_cardID.
-func (pu *PatientUpdate) AddPatientCardID(i int) *PatientUpdate {
-	pu.mutation.AddPatientCardID(i)
+func (pu *PatientUpdate) SetPatientCardID(s string) *PatientUpdate {
+	pu.mutation.SetPatientCardID(s)
 	return pu
 }
 
@@ -70,15 +63,8 @@ func (pu *PatientUpdate) SetPatientBirthday(t time.Time) *PatientUpdate {
 }
 
 // SetPatientTel sets the patient_tel field.
-func (pu *PatientUpdate) SetPatientTel(i int) *PatientUpdate {
-	pu.mutation.ResetPatientTel()
-	pu.mutation.SetPatientTel(i)
-	return pu
-}
-
-// AddPatientTel adds i to patient_tel.
-func (pu *PatientUpdate) AddPatientTel(i int) *PatientUpdate {
-	pu.mutation.AddPatientTel(i)
+func (pu *PatientUpdate) SetPatientTel(s string) *PatientUpdate {
+	pu.mutation.SetPatientTel(s)
 	return pu
 }
 
@@ -212,9 +198,19 @@ func (pu *PatientUpdate) Save(ctx context.Context) (int, error) {
 			return 0, &ValidationError{Name: "patient_name", err: fmt.Errorf("ent: validator failed for field \"patient_name\": %w", err)}
 		}
 	}
+	if v, ok := pu.mutation.PatientCardID(); ok {
+		if err := patient.PatientCardIDValidator(v); err != nil {
+			return 0, &ValidationError{Name: "patient_cardID", err: fmt.Errorf("ent: validator failed for field \"patient_cardID\": %w", err)}
+		}
+	}
 	if v, ok := pu.mutation.PatientAddress(); ok {
 		if err := patient.PatientAddressValidator(v); err != nil {
 			return 0, &ValidationError{Name: "patient_address", err: fmt.Errorf("ent: validator failed for field \"patient_address\": %w", err)}
+		}
+	}
+	if v, ok := pu.mutation.PatientTel(); ok {
+		if err := patient.PatientTelValidator(v); err != nil {
+			return 0, &ValidationError{Name: "patient_tel", err: fmt.Errorf("ent: validator failed for field \"patient_tel\": %w", err)}
 		}
 	}
 	if v, ok := pu.mutation.PatientAge(); ok {
@@ -306,14 +302,7 @@ func (pu *PatientUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if value, ok := pu.mutation.PatientCardID(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: patient.FieldPatientCardID,
-		})
-	}
-	if value, ok := pu.mutation.AddedPatientCardID(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
+			Type:   field.TypeString,
 			Value:  value,
 			Column: patient.FieldPatientCardID,
 		})
@@ -334,14 +323,7 @@ func (pu *PatientUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if value, ok := pu.mutation.PatientTel(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: patient.FieldPatientTel,
-		})
-	}
-	if value, ok := pu.mutation.AddedPatientTel(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
+			Type:   field.TypeString,
 			Value:  value,
 			Column: patient.FieldPatientTel,
 		})
@@ -531,15 +513,8 @@ func (puo *PatientUpdateOne) SetPatientName(s string) *PatientUpdateOne {
 }
 
 // SetPatientCardID sets the patient_cardID field.
-func (puo *PatientUpdateOne) SetPatientCardID(i int) *PatientUpdateOne {
-	puo.mutation.ResetPatientCardID()
-	puo.mutation.SetPatientCardID(i)
-	return puo
-}
-
-// AddPatientCardID adds i to patient_cardID.
-func (puo *PatientUpdateOne) AddPatientCardID(i int) *PatientUpdateOne {
-	puo.mutation.AddPatientCardID(i)
+func (puo *PatientUpdateOne) SetPatientCardID(s string) *PatientUpdateOne {
+	puo.mutation.SetPatientCardID(s)
 	return puo
 }
 
@@ -556,15 +531,8 @@ func (puo *PatientUpdateOne) SetPatientBirthday(t time.Time) *PatientUpdateOne {
 }
 
 // SetPatientTel sets the patient_tel field.
-func (puo *PatientUpdateOne) SetPatientTel(i int) *PatientUpdateOne {
-	puo.mutation.ResetPatientTel()
-	puo.mutation.SetPatientTel(i)
-	return puo
-}
-
-// AddPatientTel adds i to patient_tel.
-func (puo *PatientUpdateOne) AddPatientTel(i int) *PatientUpdateOne {
-	puo.mutation.AddPatientTel(i)
+func (puo *PatientUpdateOne) SetPatientTel(s string) *PatientUpdateOne {
+	puo.mutation.SetPatientTel(s)
 	return puo
 }
 
@@ -698,9 +666,19 @@ func (puo *PatientUpdateOne) Save(ctx context.Context) (*Patient, error) {
 			return nil, &ValidationError{Name: "patient_name", err: fmt.Errorf("ent: validator failed for field \"patient_name\": %w", err)}
 		}
 	}
+	if v, ok := puo.mutation.PatientCardID(); ok {
+		if err := patient.PatientCardIDValidator(v); err != nil {
+			return nil, &ValidationError{Name: "patient_cardID", err: fmt.Errorf("ent: validator failed for field \"patient_cardID\": %w", err)}
+		}
+	}
 	if v, ok := puo.mutation.PatientAddress(); ok {
 		if err := patient.PatientAddressValidator(v); err != nil {
 			return nil, &ValidationError{Name: "patient_address", err: fmt.Errorf("ent: validator failed for field \"patient_address\": %w", err)}
+		}
+	}
+	if v, ok := puo.mutation.PatientTel(); ok {
+		if err := patient.PatientTelValidator(v); err != nil {
+			return nil, &ValidationError{Name: "patient_tel", err: fmt.Errorf("ent: validator failed for field \"patient_tel\": %w", err)}
 		}
 	}
 	if v, ok := puo.mutation.PatientAge(); ok {
@@ -790,14 +768,7 @@ func (puo *PatientUpdateOne) sqlSave(ctx context.Context) (pa *Patient, err erro
 	}
 	if value, ok := puo.mutation.PatientCardID(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: patient.FieldPatientCardID,
-		})
-	}
-	if value, ok := puo.mutation.AddedPatientCardID(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
+			Type:   field.TypeString,
 			Value:  value,
 			Column: patient.FieldPatientCardID,
 		})
@@ -818,14 +789,7 @@ func (puo *PatientUpdateOne) sqlSave(ctx context.Context) (pa *Patient, err erro
 	}
 	if value, ok := puo.mutation.PatientTel(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: patient.FieldPatientTel,
-		})
-	}
-	if value, ok := puo.mutation.AddedPatientTel(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
+			Type:   field.TypeString,
 			Value:  value,
 			Column: patient.FieldPatientTel,
 		})

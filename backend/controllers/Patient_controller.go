@@ -3,33 +3,30 @@ package controllers
 import (
 	"context"
 	"time"
-
+	"strconv"
 	"github.com/TP/app/ent/disease"
 	"github.com/TP/app/ent/employee"
 	"github.com/TP/app/ent/gender"
 	"github.com/TP/app/ent/medicalcare"
 	"github.com/TP/app/ent/patient"
-
 	//  "fmt"
-	"strconv"
-
 	"github.com/TP/app/ent"
 	"github.com/gin-gonic/gin"
 )
 
-// PatientController defines the struct for the Patient controller
+// PatientController defines the struct for the patient controller
 type PatientController struct {
 	client *ent.Client
 	router gin.IRouter
 }
 
 type Patient struct {
-	PatientID       string
+	PatientID		string
 	PatientName     string
-	PatientCardID   int
+	PatientCardID   string
 	Gender          int
 	PatientAddress  string
-	PatientTel      int
+	PatientTel      string
 	PatientBirthday string
 	PatientAge      int
 	Disease         int
@@ -37,13 +34,13 @@ type Patient struct {
 	Employee        int
 }
 
-// PatientCreate handles POST requests for adding Patient entities
-// @Summary Create Patient
-// @Description Create Patient
-// @ID create-Patient
+// PatientCreate handles POST requests for adding patient entities
+// @Summary Create patient
+// @Description Create patient
+// @ID create-patient
 // @Accept   json
 // @Produce  json
-// @Param Patient body ent.Patient true "Patient entity"
+// @Param patient body ent.Patient true "Patient entity"
 // @Success 200 {object} ent.Patient
 // @Failure 400 {object} gin.H
 // @Failure 500 {object} gin.H
@@ -69,7 +66,6 @@ func (ctl *PatientController) PatientCreate(c *gin.Context) {
 		return
 	}
 
-	
 	d, err := ctl.client.Disease.
 		Query().
 		Where(disease.IDEQ(int(obj.Disease))).
@@ -135,10 +131,10 @@ func (ctl *PatientController) PatientCreate(c *gin.Context) {
 
 }
 
-// GetPatient handles GET requests to retrieve a Patient entity
-// @Summary Get a Patient entity by ID
-// @Description get Patient by ID
-// @ID get-Patient
+// GetPatient handles GET requests to retrieve a patient entity
+// @Summary Get a patient entity by ID
+// @Description get patient by ID
+// @ID get-patient
 // @Produce  json
 // @Param id path int true "Patient ID"
 // @Success 200 {object} ent.Patient
@@ -169,10 +165,10 @@ func (ctl *PatientController) GetPatient(c *gin.Context) {
 	c.JSON(200, p)
 }
 
-// ListPatient handles request to get a list of Patient entities
-// @Summary List Patient entities
-// @Description list Patient entities
-// @ID list-Patient
+// ListPatient handles request to get a list of patient entities
+// @Summary List patient entities
+// @Description list patient entities
+// @ID list-patient
 // @Produce json
 // @Param limit  query int false "Limit"
 // @Param offset query int false "Offset"
@@ -217,7 +213,7 @@ func (ctl *PatientController) ListPatient(c *gin.Context) {
 	c.JSON(200, patients)
 }
 
-// NewPatientController creates and patients handles for the user controller
+// NewPatientController creates and patients handles for the patient controller
 func NewPatientController(router gin.IRouter, client *ent.Client) *PatientController {
 	pc := &PatientController{
 		client: client,

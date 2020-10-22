@@ -88,8 +88,12 @@ var (
 	PatientIDValidator func(string) error
 	// PatientNameValidator is a validator for the "patient_name" field. It is called by the builders before save.
 	PatientNameValidator func(string) error
+	// PatientCardIDValidator is a validator for the "patient_cardID" field. It is called by the builders before save.
+	PatientCardIDValidator func(string) error
 	// PatientAddressValidator is a validator for the "patient_address" field. It is called by the builders before save.
 	PatientAddressValidator func(string) error
+	// PatientTelValidator is a validator for the "patient_tel" field. It is called by the builders before save.
+	PatientTelValidator func(string) error
 	// PatientAgeValidator is a validator for the "patient_age" field. It is called by the builders before save.
 	PatientAgeValidator func(int) error
 )

@@ -11,22 +11,29 @@ import {
   ContentHeader,
   Link,
 } from '@backstage/core';
+import { Grid } from '@material-ui/core';
 
 const WelcomePage: FC<{}> = () => {
-  const profile = { givenName: 'to System Analysis and Design 63' };
+  const profile = { givenName: 'Dentals System' };
 
   return (
-    <Page theme={pageTheme.home}>
+    <Page theme={pageTheme.service}>
       <Header
         title={`Welcome ${profile.givenName || 'to Backstage'}`}
-        subtitle="Some quick intro and links."
       ></Header>
       <Content>
-        <ContentHeader title="Application CRUD">
-          <Link component={RouterLink} to="/Patient">
-            <Button variant="contained" color="primary">
-              Add User
-            </Button>
+        <ContentHeader title="ประวัติผู้ป่วย">
+          
+        <Link component={RouterLink} to="/">
+          <Button variant="contained" color="primary" disableElevation>
+                ComeBack Sign In
+          </Button>
+          </Link>
+          
+          <Link component={RouterLink} to="/patients">
+          <Button variant="contained" color="primary" disableElevation>
+                Add Patient
+          </Button>
           </Link>
         </ContentHeader>
         <ComponanceTable></ComponanceTable>

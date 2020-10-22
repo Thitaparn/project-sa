@@ -8,7 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { DefaultApi } from '../../api/apis';
-import Patient from '../Patient';
+import {EntPatient} from '../../api/models';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   table: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
 export default function ComponentsTable() {
   const classes = useStyles();
   const api = new DefaultApi();
-  const [patient, setPatient] = useState(Array);
+  const [patient, setPatient] = useState<EntPatient[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,15 +41,17 @@ export default function ComponentsTable() {
             <TableCell align="center">Name</TableCell>
             <TableCell align="center">Age</TableCell>
             <TableCell align="center">Tel.</TableCell>
+            <TableCell align="center">BirthDay</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {patient.map(item => (
             <TableRow key={item.id}>
               <TableCell align="center">{item.id}</TableCell>
-              <TableCell align="center">{item.name}</TableCell>
-              <TableCell align="center">{item.age}</TableCell>
-              <TableCell align="center">{item.tel}</TableCell>
+              <TableCell align="center">{item.patientName}</TableCell>
+              <TableCell align="center">{item.patientAge}</TableCell>
+              <TableCell align="center">{item.patientTel}</TableCell>
+              <TableCell align="center">{moment(item.patientBirthday).format('DD/MM/YYYY')}</TableCell>
               <TableCell align="center">
                 
               </TableCell>

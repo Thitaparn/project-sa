@@ -6,12 +6,12 @@ import (
     "github.com/facebookincubator/ent/schema/edge"
 )
 
-// Disease schema.
+// Disease holds the schema definition for the Disease entity.
 type Disease struct {
     ent.Schema
 }
 
-// Fields of the disease.
+// Fields of the Disease.
 func (Disease) Fields() []ent.Field {
     return []ent.Field{
         field.String("disease_name").NotEmpty(),

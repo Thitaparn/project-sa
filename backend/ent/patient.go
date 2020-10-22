@@ -25,13 +25,13 @@ type Patient struct {
 	// PatientName holds the value of the "patient_name" field.
 	PatientName string `json:"patient_name,omitempty"`
 	// PatientCardID holds the value of the "patient_cardID" field.
-	PatientCardID int `json:"patient_cardID,omitempty"`
+	PatientCardID string `json:"patient_cardID,omitempty"`
 	// PatientAddress holds the value of the "patient_address" field.
 	PatientAddress string `json:"patient_address,omitempty"`
 	// PatientBirthday holds the value of the "patient_birthday" field.
 	PatientBirthday time.Time `json:"patient_birthday,omitempty"`
 	// PatientTel holds the value of the "patient_tel" field.
-	PatientTel int `json:"patient_tel,omitempty"`
+	PatientTel string `json:"patient_tel,omitempty"`
 	// PatientAge holds the value of the "patient_age" field.
 	PatientAge int `json:"patient_age,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
@@ -120,10 +120,10 @@ func (*Patient) scanValues() []interface{} {
 		&sql.NullInt64{},  // id
 		&sql.NullString{}, // patient_ID
 		&sql.NullString{}, // patient_name
-		&sql.NullInt64{},  // patient_cardID
+		&sql.NullString{}, // patient_cardID
 		&sql.NullString{}, // patient_address
 		&sql.NullTime{},   // patient_birthday
-		&sql.NullInt64{},  // patient_tel
+		&sql.NullString{}, // patient_tel
 		&sql.NullInt64{},  // patient_age
 	}
 }
@@ -160,10 +160,10 @@ func (pa *Patient) assignValues(values ...interface{}) error {
 	} else if value.Valid {
 		pa.PatientName = value.String
 	}
-	if value, ok := values[2].(*sql.NullInt64); !ok {
+	if value, ok := values[2].(*sql.NullString); !ok {
 		return fmt.Errorf("unexpected type %T for field patient_cardID", values[2])
 	} else if value.Valid {
-		pa.PatientCardID = int(value.Int64)
+		pa.PatientCardID = value.String
 	}
 	if value, ok := values[3].(*sql.NullString); !ok {
 		return fmt.Errorf("unexpected type %T for field patient_address", values[3])
@@ -175,10 +175,10 @@ func (pa *Patient) assignValues(values ...interface{}) error {
 	} else if value.Valid {
 		pa.PatientBirthday = value.Time
 	}
-	if value, ok := values[5].(*sql.NullInt64); !ok {
+	if value, ok := values[5].(*sql.NullString); !ok {
 		return fmt.Errorf("unexpected type %T for field patient_tel", values[5])
 	} else if value.Valid {
-		pa.PatientTel = int(value.Int64)
+		pa.PatientTel = value.String
 	}
 	if value, ok := values[6].(*sql.NullInt64); !ok {
 		return fmt.Errorf("unexpected type %T for field patient_age", values[6])
@@ -263,13 +263,13 @@ func (pa *Patient) String() string {
 	builder.WriteString(", patient_name=")
 	builder.WriteString(pa.PatientName)
 	builder.WriteString(", patient_cardID=")
-	builder.WriteString(fmt.Sprintf("%v", pa.PatientCardID))
+	builder.WriteString(pa.PatientCardID)
 	builder.WriteString(", patient_address=")
 	builder.WriteString(pa.PatientAddress)
 	builder.WriteString(", patient_birthday=")
 	builder.WriteString(pa.PatientBirthday.Format(time.ANSIC))
 	builder.WriteString(", patient_tel=")
-	builder.WriteString(fmt.Sprintf("%v", pa.PatientTel))
+	builder.WriteString(pa.PatientTel)
 	builder.WriteString(", patient_age=")
 	builder.WriteString(fmt.Sprintf("%v", pa.PatientAge))
 	builder.WriteByte(')')

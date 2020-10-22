@@ -35,12 +35,12 @@ var doc = `{
     "paths": {
         "/diseases": {
             "get": {
-                "description": "list Disease entities",
+                "description": "list disease entities",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "List Disease entities",
-                "operationId": "list-Disease",
+                "summary": "List disease entities",
+                "operationId": "list-disease",
                 "parameters": [
                     {
                         "type": "integer",
@@ -80,19 +80,19 @@ var doc = `{
                 }
             },
             "post": {
-                "description": "Create Disease",
+                "description": "Create disease",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Create Disease",
-                "operationId": "create-Disease",
+                "summary": "Create disease",
+                "operationId": "create-disease",
                 "parameters": [
                     {
                         "description": "Disease entity",
-                        "name": "Disease",
+                        "name": "disease",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -124,12 +124,12 @@ var doc = `{
         },
         "/diseases/{id}": {
             "get": {
-                "description": "get Disease by ID",
+                "description": "get disease by ID",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get a Disease entity by ID",
-                "operationId": "get-Disease",
+                "summary": "Get a disease entity by ID",
+                "operationId": "get-disease",
                 "parameters": [
                     {
                         "type": "integer",
@@ -169,12 +169,12 @@ var doc = `{
         },
         "/employees": {
             "get": {
-                "description": "list Employee entities",
+                "description": "list employee entities",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "List Employee entities",
-                "operationId": "list-Employee",
+                "summary": "List employee entities",
+                "operationId": "list-employee",
                 "parameters": [
                     {
                         "type": "integer",
@@ -214,19 +214,19 @@ var doc = `{
                 }
             },
             "post": {
-                "description": "Create Employee",
+                "description": "Create employee",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Create Employee",
-                "operationId": "create-Employee",
+                "summary": "Create employee",
+                "operationId": "create-employee",
                 "parameters": [
                     {
                         "description": "Employee entity",
-                        "name": "Employee",
+                        "name": "employee",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -258,12 +258,12 @@ var doc = `{
         },
         "/employees/{id}": {
             "get": {
-                "description": "get Employee by ID",
+                "description": "get employee by ID",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get a Employee entity by ID",
-                "operationId": "get-Employee",
+                "summary": "Get a employee entity by ID",
+                "operationId": "get-employee",
                 "parameters": [
                     {
                         "type": "integer",
@@ -303,12 +303,12 @@ var doc = `{
         },
         "/genders": {
             "get": {
-                "description": "list Gender entities",
+                "description": "list gender entities",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "List Gender entities",
-                "operationId": "list-Gender",
+                "summary": "List gender entities",
+                "operationId": "list-gender",
                 "parameters": [
                     {
                         "type": "integer",
@@ -348,23 +348,23 @@ var doc = `{
                 }
             },
             "post": {
-                "description": "Create Gender",
+                "description": "Create gender",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Create Gender",
-                "operationId": "create-Gender",
+                "summary": "Create gender",
+                "operationId": "create-gender",
                 "parameters": [
                     {
                         "description": "Gender entity",
-                        "name": "Gender",
+                        "name": "gender",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ent.MedicalCare"
+                            "$ref": "#/definitions/ent.Gender"
                         }
                     }
                 ],
@@ -392,12 +392,12 @@ var doc = `{
         },
         "/genders/{id}": {
             "get": {
-                "description": "get Gender by ID",
+                "description": "get gender by ID",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get a Gender entity by ID",
-                "operationId": "get-Gender",
+                "summary": "Get a gender entity by ID",
+                "operationId": "get-gender",
                 "parameters": [
                     {
                         "type": "integer",
@@ -437,12 +437,12 @@ var doc = `{
         },
         "/medicalcares": {
             "get": {
-                "description": "list MedicalCare entities",
+                "description": "list medicalcare entities",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "List MedicalCare entities",
-                "operationId": "list-MedicalCare",
+                "summary": "List medicalcare entities",
+                "operationId": "list-medicalcare",
                 "parameters": [
                     {
                         "type": "integer",
@@ -482,19 +482,19 @@ var doc = `{
                 }
             },
             "post": {
-                "description": "Create MedicalCare",
+                "description": "Create medicalcare",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Create MedicalCare",
-                "operationId": "create-MedicalCare",
+                "summary": "Create medicalcare",
+                "operationId": "create-medicalcare",
                 "parameters": [
                     {
                         "description": "MedicalCare entity",
-                        "name": "MedicalCare",
+                        "name": "medicalcare",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -571,12 +571,12 @@ var doc = `{
         },
         "/patients": {
             "get": {
-                "description": "list Patient entities",
+                "description": "list patient entities",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "List Patient entities",
-                "operationId": "list-Patient",
+                "summary": "List patient entities",
+                "operationId": "list-patient",
                 "parameters": [
                     {
                         "type": "integer",
@@ -616,19 +616,19 @@ var doc = `{
                 }
             },
             "post": {
-                "description": "Create Patient",
+                "description": "Create patient",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Create Patient",
-                "operationId": "create-Patient",
+                "summary": "Create patient",
+                "operationId": "create-patient",
                 "parameters": [
                     {
                         "description": "Patient entity",
-                        "name": "Patient",
+                        "name": "patient",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -660,12 +660,12 @@ var doc = `{
         },
         "/patients/{id}": {
             "get": {
-                "description": "get Patient by ID",
+                "description": "get patient by ID",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get a Patient entity by ID",
-                "operationId": "get-Patient",
+                "summary": "Get a patient entity by ID",
+                "operationId": "get-patient",
                 "parameters": [
                     {
                         "type": "integer",
@@ -845,6 +845,10 @@ var doc = `{
                     "description": "ID of the ent.",
                     "type": "integer"
                 },
+                "patient_ID": {
+                    "description": "PatientID holds the value of the \"patient_ID\" field.",
+                    "type": "string"
+                },
                 "patient_address": {
                     "description": "PatientAddress holds the value of the \"patient_address\" field.",
                     "type": "string"
@@ -859,7 +863,7 @@ var doc = `{
                 },
                 "patient_cardID": {
                     "description": "PatientCardID holds the value of the \"patient_cardID\" field.",
-                    "type": "integer"
+                    "type": "string"
                 },
                 "patient_name": {
                     "description": "PatientName holds the value of the \"patient_name\" field.",
@@ -867,7 +871,7 @@ var doc = `{
                 },
                 "patient_tel": {
                     "description": "PatientTel holds the value of the \"patient_tel\" field.",
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },

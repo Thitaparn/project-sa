@@ -9,19 +9,19 @@ import (
    
 )
  
-// MedicalCareController defines the struct for the MedicalCare controller
+// MedicalCareController defines the struct for the medicalcare controller
 type MedicalCareController struct {
    client *ent.Client
    router gin.IRouter
 }
 
-// MedicalCareCreate handles POST requests for adding MedicalCare entities
-// @Summary Create MedicalCare
-// @Description Create MedicalCare
-// @ID create-MedicalCare
+// MedicalCareCreate handles POST requests for adding medicalcare entities
+// @Summary Create medicalcare
+// @Description Create medicalcare
+// @ID create-medicalcare
 // @Accept   json
 // @Produce  json
-// @Param MedicalCare body ent.MedicalCare true "MedicalCare entity"
+// @Param medicalcare body ent.MedicalCare true "MedicalCare entity"
 // @Success 200 {object} ent.MedicalCare
 // @Failure 400 {object} gin.H
 // @Failure 500 {object} gin.H
@@ -83,10 +83,10 @@ func (ctl *MedicalCareController) GetMedicalCare(c *gin.Context) {
 	c.JSON(200, m)
  }
 
-// ListMedicalCare handles request to get a list of MedicalCare entities
-// @Summary List MedicalCare entities
-// @Description list MedicalCare entities
-// @ID list-MedicalCare
+// ListMedicalCare handles request to get a list of medicalcare entities
+// @Summary List medicalcare entities
+// @Description list medicalcare entities
+// @ID list-medicalcare
 // @Produce json
 // @Param limit  query int false "Limit"
 // @Param offset query int false "Offset"
@@ -123,7 +123,7 @@ func (ctl *MedicalCareController) ListMedicalCare(c *gin.Context) {
 	c.JSON(200, medicalcares)
  }
  
-// NewMedicalCareController creates and registers handles for the MedicalCare controller
+// NewMedicalCareController creates and registers handles for the medicalcare controller
 func NewMedicalCareController(router gin.IRouter, client *ent.Client) *MedicalCareController {
 	mc := &MedicalCareController{
 		client: client,

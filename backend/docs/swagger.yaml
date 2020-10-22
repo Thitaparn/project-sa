@@ -109,6 +109,9 @@ definitions:
       id:
         description: ID of the ent.
         type: integer
+      patient_ID:
+        description: PatientID holds the value of the "patient_ID" field.
+        type: string
       patient_address:
         description: PatientAddress holds the value of the "patient_address" field.
         type: string
@@ -120,13 +123,13 @@ definitions:
         type: string
       patient_cardID:
         description: PatientCardID holds the value of the "patient_cardID" field.
-        type: integer
+        type: string
       patient_name:
         description: PatientName holds the value of the "patient_name" field.
         type: string
       patient_tel:
         description: PatientTel holds the value of the "patient_tel" field.
-        type: integer
+        type: string
     type: object
   ent.PatientEdges:
     properties:
@@ -166,8 +169,8 @@ info:
 paths:
   /diseases:
     get:
-      description: list Disease entities
-      operationId: list-Disease
+      description: list disease entities
+      operationId: list-disease
       parameters:
       - description: Limit
         in: query
@@ -194,16 +197,16 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: List Disease entities
+      summary: List disease entities
     post:
       consumes:
       - application/json
-      description: Create Disease
-      operationId: create-Disease
+      description: Create disease
+      operationId: create-disease
       parameters:
       - description: Disease entity
         in: body
-        name: Disease
+        name: disease
         required: true
         schema:
           $ref: '#/definitions/ent.Disease'
@@ -222,11 +225,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Create Disease
+      summary: Create disease
   /diseases/{id}:
     get:
-      description: get Disease by ID
-      operationId: get-Disease
+      description: get disease by ID
+      operationId: get-disease
       parameters:
       - description: Disease ID
         in: path
@@ -252,11 +255,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Get a Disease entity by ID
+      summary: Get a disease entity by ID
   /employees:
     get:
-      description: list Employee entities
-      operationId: list-Employee
+      description: list employee entities
+      operationId: list-employee
       parameters:
       - description: Limit
         in: query
@@ -283,16 +286,16 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: List Employee entities
+      summary: List employee entities
     post:
       consumes:
       - application/json
-      description: Create Employee
-      operationId: create-Employee
+      description: Create employee
+      operationId: create-employee
       parameters:
       - description: Employee entity
         in: body
-        name: Employee
+        name: employee
         required: true
         schema:
           $ref: '#/definitions/ent.Employee'
@@ -311,11 +314,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Create Employee
+      summary: Create employee
   /employees/{id}:
     get:
-      description: get Employee by ID
-      operationId: get-Employee
+      description: get employee by ID
+      operationId: get-employee
       parameters:
       - description: Employee ID
         in: path
@@ -341,11 +344,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Get a Employee entity by ID
+      summary: Get a employee entity by ID
   /genders:
     get:
-      description: list Gender entities
-      operationId: list-Gender
+      description: list gender entities
+      operationId: list-gender
       parameters:
       - description: Limit
         in: query
@@ -372,19 +375,19 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: List Gender entities
+      summary: List gender entities
     post:
       consumes:
       - application/json
-      description: Create Gender
-      operationId: create-Gender
+      description: Create gender
+      operationId: create-gender
       parameters:
       - description: Gender entity
         in: body
-        name: Gender
+        name: gender
         required: true
         schema:
-          $ref: '#/definitions/ent.MedicalCare'
+          $ref: '#/definitions/ent.Gender'
       produces:
       - application/json
       responses:
@@ -400,11 +403,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Create Gender
+      summary: Create gender
   /genders/{id}:
     get:
-      description: get Gender by ID
-      operationId: get-Gender
+      description: get gender by ID
+      operationId: get-gender
       parameters:
       - description: Gender ID
         in: path
@@ -430,11 +433,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Get a Gender entity by ID
+      summary: Get a gender entity by ID
   /medicalcares:
     get:
-      description: list MedicalCare entities
-      operationId: list-MedicalCare
+      description: list medicalcare entities
+      operationId: list-medicalcare
       parameters:
       - description: Limit
         in: query
@@ -461,16 +464,16 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: List MedicalCare entities
+      summary: List medicalcare entities
     post:
       consumes:
       - application/json
-      description: Create MedicalCare
-      operationId: create-MedicalCare
+      description: Create medicalcare
+      operationId: create-medicalcare
       parameters:
       - description: MedicalCare entity
         in: body
-        name: MedicalCare
+        name: medicalcare
         required: true
         schema:
           $ref: '#/definitions/ent.MedicalCare'
@@ -489,7 +492,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Create MedicalCare
+      summary: Create medicalcare
   /medicalcares/{id}:
     get:
       description: get MedicalCare by ID
@@ -522,8 +525,8 @@ paths:
       summary: Get a MedicalCare entity by ID
   /patients:
     get:
-      description: list Patient entities
-      operationId: list-Patient
+      description: list patient entities
+      operationId: list-patient
       parameters:
       - description: Limit
         in: query
@@ -550,16 +553,16 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: List Patient entities
+      summary: List patient entities
     post:
       consumes:
       - application/json
-      description: Create Patient
-      operationId: create-Patient
+      description: Create patient
+      operationId: create-patient
       parameters:
       - description: Patient entity
         in: body
-        name: Patient
+        name: patient
         required: true
         schema:
           $ref: '#/definitions/ent.Patient'
@@ -578,11 +581,11 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Create Patient
+      summary: Create patient
   /patients/{id}:
     get:
-      description: get Patient by ID
-      operationId: get-Patient
+      description: get patient by ID
+      operationId: get-patient
       parameters:
       - description: Patient ID
         in: path
@@ -608,7 +611,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/gin.H'
-      summary: Get a Patient entity by ID
+      summary: Get a patient entity by ID
 securityDefinitions:
   ApiKeyAuth:
     in: header

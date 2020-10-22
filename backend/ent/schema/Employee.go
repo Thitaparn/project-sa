@@ -6,7 +6,7 @@ import (
     "github.com/facebookincubator/ent/schema/edge"
 )
 
-// Employee schema.
+// Employee holds the schema definition for the Employee entity.
 type Employee struct {
     ent.Schema
 }

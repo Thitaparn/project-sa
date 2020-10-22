@@ -108,7 +108,7 @@ func PatientName(v string) predicate.Patient {
 }
 
 // PatientCardID applies equality check predicate on the "patient_cardID" field. It's identical to PatientCardIDEQ.
-func PatientCardID(v int) predicate.Patient {
+func PatientCardID(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.EQ(s.C(FieldPatientCardID), v))
 	})
@@ -129,7 +129,7 @@ func PatientBirthday(v time.Time) predicate.Patient {
 }
 
 // PatientTel applies equality check predicate on the "patient_tel" field. It's identical to PatientTelEQ.
-func PatientTel(v int) predicate.Patient {
+func PatientTel(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.EQ(s.C(FieldPatientTel), v))
 	})
@@ -365,21 +365,21 @@ func PatientNameContainsFold(v string) predicate.Patient {
 }
 
 // PatientCardIDEQ applies the EQ predicate on the "patient_cardID" field.
-func PatientCardIDEQ(v int) predicate.Patient {
+func PatientCardIDEQ(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.EQ(s.C(FieldPatientCardID), v))
 	})
 }
 
 // PatientCardIDNEQ applies the NEQ predicate on the "patient_cardID" field.
-func PatientCardIDNEQ(v int) predicate.Patient {
+func PatientCardIDNEQ(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.NEQ(s.C(FieldPatientCardID), v))
 	})
 }
 
 // PatientCardIDIn applies the In predicate on the "patient_cardID" field.
-func PatientCardIDIn(vs ...int) predicate.Patient {
+func PatientCardIDIn(vs ...string) predicate.Patient {
 	v := make([]interface{}, len(vs))
 	for i := range v {
 		v[i] = vs[i]
@@ -396,7 +396,7 @@ func PatientCardIDIn(vs ...int) predicate.Patient {
 }
 
 // PatientCardIDNotIn applies the NotIn predicate on the "patient_cardID" field.
-func PatientCardIDNotIn(vs ...int) predicate.Patient {
+func PatientCardIDNotIn(vs ...string) predicate.Patient {
 	v := make([]interface{}, len(vs))
 	for i := range v {
 		v[i] = vs[i]
@@ -413,30 +413,65 @@ func PatientCardIDNotIn(vs ...int) predicate.Patient {
 }
 
 // PatientCardIDGT applies the GT predicate on the "patient_cardID" field.
-func PatientCardIDGT(v int) predicate.Patient {
+func PatientCardIDGT(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.GT(s.C(FieldPatientCardID), v))
 	})
 }
 
 // PatientCardIDGTE applies the GTE predicate on the "patient_cardID" field.
-func PatientCardIDGTE(v int) predicate.Patient {
+func PatientCardIDGTE(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.GTE(s.C(FieldPatientCardID), v))
 	})
 }
 
 // PatientCardIDLT applies the LT predicate on the "patient_cardID" field.
-func PatientCardIDLT(v int) predicate.Patient {
+func PatientCardIDLT(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.LT(s.C(FieldPatientCardID), v))
 	})
 }
 
 // PatientCardIDLTE applies the LTE predicate on the "patient_cardID" field.
-func PatientCardIDLTE(v int) predicate.Patient {
+func PatientCardIDLTE(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.LTE(s.C(FieldPatientCardID), v))
+	})
+}
+
+// PatientCardIDContains applies the Contains predicate on the "patient_cardID" field.
+func PatientCardIDContains(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.Contains(s.C(FieldPatientCardID), v))
+	})
+}
+
+// PatientCardIDHasPrefix applies the HasPrefix predicate on the "patient_cardID" field.
+func PatientCardIDHasPrefix(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.HasPrefix(s.C(FieldPatientCardID), v))
+	})
+}
+
+// PatientCardIDHasSuffix applies the HasSuffix predicate on the "patient_cardID" field.
+func PatientCardIDHasSuffix(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.HasSuffix(s.C(FieldPatientCardID), v))
+	})
+}
+
+// PatientCardIDEqualFold applies the EqualFold predicate on the "patient_cardID" field.
+func PatientCardIDEqualFold(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.EqualFold(s.C(FieldPatientCardID), v))
+	})
+}
+
+// PatientCardIDContainsFold applies the ContainsFold predicate on the "patient_cardID" field.
+func PatientCardIDContainsFold(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.ContainsFold(s.C(FieldPatientCardID), v))
 	})
 }
 
@@ -628,21 +663,21 @@ func PatientBirthdayLTE(v time.Time) predicate.Patient {
 }
 
 // PatientTelEQ applies the EQ predicate on the "patient_tel" field.
-func PatientTelEQ(v int) predicate.Patient {
+func PatientTelEQ(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.EQ(s.C(FieldPatientTel), v))
 	})
 }
 
 // PatientTelNEQ applies the NEQ predicate on the "patient_tel" field.
-func PatientTelNEQ(v int) predicate.Patient {
+func PatientTelNEQ(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.NEQ(s.C(FieldPatientTel), v))
 	})
 }
 
 // PatientTelIn applies the In predicate on the "patient_tel" field.
-func PatientTelIn(vs ...int) predicate.Patient {
+func PatientTelIn(vs ...string) predicate.Patient {
 	v := make([]interface{}, len(vs))
 	for i := range v {
 		v[i] = vs[i]
@@ -659,7 +694,7 @@ func PatientTelIn(vs ...int) predicate.Patient {
 }
 
 // PatientTelNotIn applies the NotIn predicate on the "patient_tel" field.
-func PatientTelNotIn(vs ...int) predicate.Patient {
+func PatientTelNotIn(vs ...string) predicate.Patient {
 	v := make([]interface{}, len(vs))
 	for i := range v {
 		v[i] = vs[i]
@@ -676,30 +711,65 @@ func PatientTelNotIn(vs ...int) predicate.Patient {
 }
 
 // PatientTelGT applies the GT predicate on the "patient_tel" field.
-func PatientTelGT(v int) predicate.Patient {
+func PatientTelGT(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.GT(s.C(FieldPatientTel), v))
 	})
 }
 
 // PatientTelGTE applies the GTE predicate on the "patient_tel" field.
-func PatientTelGTE(v int) predicate.Patient {
+func PatientTelGTE(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.GTE(s.C(FieldPatientTel), v))
 	})
 }
 
 // PatientTelLT applies the LT predicate on the "patient_tel" field.
-func PatientTelLT(v int) predicate.Patient {
+func PatientTelLT(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.LT(s.C(FieldPatientTel), v))
 	})
 }
 
 // PatientTelLTE applies the LTE predicate on the "patient_tel" field.
-func PatientTelLTE(v int) predicate.Patient {
+func PatientTelLTE(v string) predicate.Patient {
 	return predicate.Patient(func(s *sql.Selector) {
 		s.Where(sql.LTE(s.C(FieldPatientTel), v))
+	})
+}
+
+// PatientTelContains applies the Contains predicate on the "patient_tel" field.
+func PatientTelContains(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.Contains(s.C(FieldPatientTel), v))
+	})
+}
+
+// PatientTelHasPrefix applies the HasPrefix predicate on the "patient_tel" field.
+func PatientTelHasPrefix(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.HasPrefix(s.C(FieldPatientTel), v))
+	})
+}
+
+// PatientTelHasSuffix applies the HasSuffix predicate on the "patient_tel" field.
+func PatientTelHasSuffix(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.HasSuffix(s.C(FieldPatientTel), v))
+	})
+}
+
+// PatientTelEqualFold applies the EqualFold predicate on the "patient_tel" field.
+func PatientTelEqualFold(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.EqualFold(s.C(FieldPatientTel), v))
+	})
+}
+
+// PatientTelContainsFold applies the ContainsFold predicate on the "patient_tel" field.
+func PatientTelContainsFold(v string) predicate.Patient {
+	return predicate.Patient(func(s *sql.Selector) {
+		s.Where(sql.ContainsFold(s.C(FieldPatientTel), v))
 	})
 }
 

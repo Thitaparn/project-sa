@@ -74,10 +74,10 @@ export function EntPatientEdgesFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'disease': !exists(json, 'disease') ? undefined : EntDiseaseFromJSON(json['disease']),
-        'employee': !exists(json, 'employee') ? undefined : EntEmployeeFromJSON(json['employee']),
-        'gender': !exists(json, 'gender') ? undefined : EntGenderFromJSON(json['gender']),
-        'medicalcare': !exists(json, 'medicalcare') ? undefined : EntMedicalCareFromJSON(json['medicalcare']),
+        'disease': !exists(json, 'Disease') ? undefined : EntDiseaseFromJSON(json['Disease']),
+        'employee': !exists(json, 'Employee') ? undefined : EntEmployeeFromJSON(json['Employee']),
+        'gender': !exists(json, 'Gender') ? undefined : EntGenderFromJSON(json['Gender']),
+        'medicalcare': !exists(json, 'Medicalcare') ? undefined : EntMedicalCareFromJSON(json['Medicalcare']),
     };
 }
 

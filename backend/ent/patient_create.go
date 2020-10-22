@@ -37,8 +37,8 @@ func (pc *PatientCreate) SetPatientName(s string) *PatientCreate {
 }
 
 // SetPatientCardID sets the patient_cardID field.
-func (pc *PatientCreate) SetPatientCardID(i int) *PatientCreate {
-	pc.mutation.SetPatientCardID(i)
+func (pc *PatientCreate) SetPatientCardID(s string) *PatientCreate {
+	pc.mutation.SetPatientCardID(s)
 	return pc
 }
 
@@ -55,8 +55,8 @@ func (pc *PatientCreate) SetPatientBirthday(t time.Time) *PatientCreate {
 }
 
 // SetPatientTel sets the patient_tel field.
-func (pc *PatientCreate) SetPatientTel(i int) *PatientCreate {
-	pc.mutation.SetPatientTel(i)
+func (pc *PatientCreate) SetPatientTel(s string) *PatientCreate {
+	pc.mutation.SetPatientTel(s)
 	return pc
 }
 
@@ -168,6 +168,11 @@ func (pc *PatientCreate) Save(ctx context.Context) (*Patient, error) {
 	if _, ok := pc.mutation.PatientCardID(); !ok {
 		return nil, &ValidationError{Name: "patient_cardID", err: errors.New("ent: missing required field \"patient_cardID\"")}
 	}
+	if v, ok := pc.mutation.PatientCardID(); ok {
+		if err := patient.PatientCardIDValidator(v); err != nil {
+			return nil, &ValidationError{Name: "patient_cardID", err: fmt.Errorf("ent: validator failed for field \"patient_cardID\": %w", err)}
+		}
+	}
 	if _, ok := pc.mutation.PatientAddress(); !ok {
 		return nil, &ValidationError{Name: "patient_address", err: errors.New("ent: missing required field \"patient_address\"")}
 	}
@@ -181,6 +186,11 @@ func (pc *PatientCreate) Save(ctx context.Context) (*Patient, error) {
 	}
 	if _, ok := pc.mutation.PatientTel(); !ok {
 		return nil, &ValidationError{Name: "patient_tel", err: errors.New("ent: missing required field \"patient_tel\"")}
+	}
+	if v, ok := pc.mutation.PatientTel(); ok {
+		if err := patient.PatientTelValidator(v); err != nil {
+			return nil, &ValidationError{Name: "patient_tel", err: fmt.Errorf("ent: validator failed for field \"patient_tel\": %w", err)}
+		}
 	}
 	if _, ok := pc.mutation.PatientAge(); !ok {
 		return nil, &ValidationError{Name: "patient_age", err: errors.New("ent: missing required field \"patient_age\"")}
@@ -268,7 +278,7 @@ func (pc *PatientCreate) createSpec() (*Patient, *sqlgraph.CreateSpec) {
 	}
 	if value, ok := pc.mutation.PatientCardID(); ok {
 		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
+			Type:   field.TypeString,
 			Value:  value,
 			Column: patient.FieldPatientCardID,
 		})
@@ -292,7 +302,7 @@ func (pc *PatientCreate) createSpec() (*Patient, *sqlgraph.CreateSpec) {
 	}
 	if value, ok := pc.mutation.PatientTel(); ok {
 		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
+			Type:   field.TypeString,
 			Value:  value,
 			Column: patient.FieldPatientTel,
 		})

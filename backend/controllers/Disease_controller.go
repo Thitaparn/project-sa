@@ -9,19 +9,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// DiseaseController defines the struct for the Disease controller
+// DiseaseController defines the struct for the disease controller
 type DiseaseController struct {
 	client *ent.Client
 	router gin.IRouter
 }
 
-// DiseaseCreate handles POST requests for adding Disease entities
-// @Summary Create Disease
-// @Description Create Disease
-// @ID create-Disease
+// DiseaseCreate handles POST requests for adding disease entities
+// @Summary Create disease
+// @Description Create disease
+// @ID create-disease
 // @Accept   json
 // @Produce  json
-// @Param Disease body ent.Disease true "Disease entity"
+// @Param disease body ent.Disease true "Disease entity"
 // @Success 200 {object} ent.Disease
 // @Failure 400 {object} gin.H
 // @Failure 500 {object} gin.H
@@ -49,10 +49,10 @@ func (ctl *DiseaseController) DiseaseCreate(c *gin.Context) {
 	c.JSON(200, d)
 }
 
-// GetDisease handles GET requests to retrieve a Disease entity
-// @Summary Get a Disease entity by ID
-// @Description get Disease by ID
-// @ID get-Disease
+// GetDisease handles GET requests to retrieve a disease entity
+// @Summary Get a disease entity by ID
+// @Description get disease by ID
+// @ID get-disease
 // @Produce  json
 // @Param id path int true "Disease ID"
 // @Success 200 {object} ent.Disease
@@ -83,10 +83,10 @@ func (ctl *DiseaseController) GetDisease(c *gin.Context) {
 	c.JSON(200, d)
 }
 
-// ListDisease handles request to get a list of Disease entities
-// @Summary List Disease entities
-// @Description list Disease entities
-// @ID list-Disease
+// ListDisease handles request to get a list of disease entities
+// @Summary List disease entities
+// @Description list disease entities
+// @ID list-disease
 // @Produce json
 // @Param limit  query int false "Limit"
 // @Param offset query int false "Offset"
@@ -126,7 +126,7 @@ func (ctl *DiseaseController) ListDisease(c *gin.Context) {
 	c.JSON(200, diseases)
 }
 
-// NewDiseaseController creates and registers handles for the Disease controller
+// NewDiseaseController creates and registers handles for the disease controller
 func NewDiseaseController(router gin.IRouter, client *ent.Client) *DiseaseController {
 	dc := &DiseaseController{
 		client: client,
